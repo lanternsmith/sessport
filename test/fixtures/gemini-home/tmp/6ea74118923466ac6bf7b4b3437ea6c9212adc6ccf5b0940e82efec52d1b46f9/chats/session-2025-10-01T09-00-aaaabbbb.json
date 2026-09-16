@@ -1,0 +1,20 @@
+{
+  "sessionId": "aaaabbbb-0000-4000-8000-000000000000",
+  "projectHash": "6ea74118923466ac6bf7b4b3437ea6c9212adc6ccf5b0940e82efec52d1b46f9",
+  "startTime": "2025-10-01T09:00:00.000Z",
+  "lastUpdated": "2025-10-01T09:10:00.000Z",
+  "messages": [
+    {
+      "id": "l1",
+      "timestamp": "2025-10-01T09:00:00.000Z",
+      "type": "user",
+      "content": "legacy gemini prompt"
+    },
+    {
+      "id": "l2",
+      "timestamp": "2025-10-01T09:00:05.000Z",
+      "type": "gemini",
+      "content": "legacy gemini answer"
+    }
+  ]
+}

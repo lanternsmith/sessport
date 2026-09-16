@@ -1,0 +1,48 @@
+name: Compatibility (real CLIs)
+
+# Converts fixture sessions and resumes them with the latest Claude Code,
+# Codex CLI and Gemini CLI against local mock model servers. Catches session
+# format drift before users do.
+on:
+  schedule:
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'src/adapters/**'
+      - 'src/prepare.ts'
+      - 'scripts/e2e.mjs'
+
+permissions:
+  contents: read
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Install the real CLIs
+        run: |
+          npm install -g @openai/codex@latest @anthropic-ai/claude-code@latest
+          npm install --no-save @google/gemini-cli-core@latest
+          codex --version
+          claude --version
+      - run: npm run e2e
+      - name: Open an issue on scheduled failure
+        if: failure() && github.event_name == 'schedule'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Compatibility check failed: a CLI session format may have changed',
+              body: `See ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              labels: ['format-drift'],
+            });

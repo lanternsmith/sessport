@@ -1,0 +1,1 @@
+{"parentUuid": null, "isSidechain": false, "userType": "external", "entrypoint": "cli", "cwd": "/Users/dev/app", "sessionId": "11111111-2222-4333-8444-555555555555", "version": "2.1.200", "gitBranch": "main", "type": "user", "message": {"role": "user", "content": "nested"}, "uuid": "z1", "timestamp": "2026-09-10T10:00:00.000Z"}

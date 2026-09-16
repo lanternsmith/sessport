@@ -1,0 +1,62 @@
+{
+  "name": "sessport",
+  "version": "0.1.0",
+  "description": "Move AI coding-agent sessions between Claude Code, Codex CLI and Gemini CLI. List, search, export, hand off, and convert into a natively resumable session.",
+  "keywords": [
+    "claude-code",
+    "codex",
+    "codex-cli",
+    "gemini-cli",
+    "ai-agent",
+    "session",
+    "resume",
+    "handoff",
+    "transcript",
+    "cli"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "sessport": "dist/cli.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "tsc -p tsconfig.build.json --watch",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build",
+    "e2e": "node scripts/e2e.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lanternsmith/sessport.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lanternsmith/sessport/issues"
+  },
+  "homepage": "https://github.com/lanternsmith/sessport#readme",
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.6.0",
+    "vitest": "^3.2.0"
+  }
+}

@@ -1,0 +1,15 @@
+name: Feature or new tool
+description: Suggest an improvement or support for another agent (Cursor, OpenCode, Aider, ...)
+labels: [enhancement]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: What do you want to do?
+    validations:
+      required: true
+  - type: textarea
+    id: format
+    attributes:
+      label: For a new tool, where does it store sessions?
+      description: Paths and format, if you know them.

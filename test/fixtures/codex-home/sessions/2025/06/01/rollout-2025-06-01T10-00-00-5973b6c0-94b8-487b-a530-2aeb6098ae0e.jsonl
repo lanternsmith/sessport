@@ -1,0 +1,4 @@
+{"id": "5973b6c0-94b8-487b-a530-2aeb6098ae0e", "timestamp": "2025-06-01T10:00:00.000Z", "instructions": null}
+{"record_type": "state"}
+{"type": "message", "role": "user", "content": [{"type": "input_text", "text": "legacy hello"}]}
+{"type": "message", "role": "assistant", "content": [{"type": "output_text", "text": "legacy reply"}]}
